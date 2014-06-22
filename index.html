@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test deck</title>
+  <title>Data Products Course Project</title>
   <meta charset="utf-8">
-  <meta name="description" content="Test deck">
-  <meta name="author" content="">
+  <meta name="description" content="Data Products Course Project">
+  <meta name="author" content="Ines Garmendia">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -32,9 +32,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Test deck</h1>
-    <h2></h2>
-    <p><br/></p>
+    <h1>Data Products Course Project</h1>
+    <h2>Reproducible Presentation in Slidify</h2>
+    <p>Ines Garmendia<br/>Scholarship holder - Research in official statistics</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -43,29 +43,88 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>Purpose of the App</h2>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
+<li>To design a dashboard to explore a bunch of items from a questionnaire: the Living Conditions Survey, Basque Government (north of Spain), year 2009.</li>
+<li>Living condition items (such as health status or number of languages spoken by the person) are visualized as a function of the labour market segmentation, according to which people are classified as occupied, unemployed, occupied in unpaid activities (studying or housekeeping), or retired.</li>
+<li>Aim is to facilitate exploration of data, in order to find patterns. For example: occupied people speak more languages than the retired. Some  will be obvious, others unexpected.</li>
 </ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>About the data</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">plot(1:10, 1:10)
+    <p>Data is coming from two sources of information from the same institution, Eustat - Basque Government Institute for Official Statistics:</p>
+
+<ol>
+<li><em>The Living Conditions Survey</em> 2009, in which people where interviewed and gave details about many individual and family dimentions of life  such as health status, working conditions, type of household, social relations, level of instruction, and income.</li>
+<li><em>The Population in Relation to Activity Panel</em>, 4th quarter of 2009, from which the labour market classification was derived for the same population.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>An example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Let&#39;s derive one of the tables, i.e. crossing one living conditions item vs labour force segment.</p>
+
+<pre><code class="r">data &lt;- get(load(&#39;data.Rda&#39;))
+addmargins(prop.table(xtabs( weigths ~ LFS + IncomeLevel, data = data ),1)*100)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+<pre><code>##                           IncomeLevel
+## LFS                            Low  Medium    High No response     Sum
+##   Occupied                   7.372  49.205  29.249      14.174 100.000
+##   Unemployed (unpaid work)  34.873  36.928   9.500      18.699 100.000
+##   Unemployed (strict)       21.096  51.783  16.747      10.374 100.000
+##   Non-active (unpaid work)  23.429  43.980  14.819      17.771 100.000
+##   Retired                   20.792  51.443  13.800      13.966 100.000
+##   Sum                      107.562 233.338  84.115      74.985 500.000
+</code></pre>
 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Visualization method</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The chosen visualization method is the <em>balloon plot</em>, where the value of each pairs of categories (in this case, % of people in each segment, having each condition) is mapped to the area or radius of a balloon. </p>
+
+<p>In this way, differences in patterns between distinct segments are highlighted.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Thanks</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>I hope you enjoy this interactive visualization.
+Thanks!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <article data-timings="">
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -76,14 +135,38 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='Purpose of the App'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='About the data'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='An example'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Visualization method'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Thanks'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title=''>
+         6
       </a>
     </li>
   </ul>
